@@ -27,10 +27,11 @@ public class Penguin extends GamePage {
         }
         else{
            if (probability<20){
-               battlePingus - 2;
+               battlePingus = battlePingus - 1;
            }
-
-
+            if (probability<20){
+                battlePingus = battlePingus - 1;
+            }
         }
     }
 }
