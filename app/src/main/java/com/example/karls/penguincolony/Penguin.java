@@ -15,7 +15,7 @@ public class Penguin extends GamePage {
 
     public int numOfPingus =20;
 
-    public String onHuntClick(View view){
+    public String onClickButHunt(View view){
         TextView textView = (TextView)findViewById(R.id.textView1);
 
         Random rand = new Random();
