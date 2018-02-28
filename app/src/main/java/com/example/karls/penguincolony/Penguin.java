@@ -15,7 +15,7 @@ public class Penguin extends GamePage {
 
     public int numOfPingus =20;
 
-    public String onHuntClick(View view){
+    public void onHuntClick(View view){
         TextView textView = (TextView)findViewById(R.id.textView1);
 
         Random rand = new Random();
@@ -35,6 +35,5 @@ public class Penguin extends GamePage {
             numOfPingus = numOfPingus+battlePingus-5; //Just a practice
             textView.setText(numOfPingus + "Pingus");
         }
-        return "numOfPingus";
     }
 }
