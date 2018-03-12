@@ -33,7 +33,8 @@ public class Penguin extends GamePage {
             }
             numOfPingus = numOfPingus+battlePingus;
             numOfPingus = numOfPingus+battlePingus-5; //Just a practice
-            textView.setText(numOfPingus + "Pingus");
+            String theIntString = Integer.toString(numOfPingus);
+            textView.setText(theIntString + "Pingus");
         }
         return "numOfPingus";
     }
