@@ -11,31 +11,35 @@ import java.util.Random;
  */
 
 public class Penguin extends GamePage {
-    public double breedRate = .25; //Here for future purposes
 
-    public int numOfPingus =20;
+    public int numOfPingus =20; //Initial value of penguins at the start of the game
 
-    public String onClickButHunt(View view){
-        TextView textView = (TextView)findViewById(R.id.textView1);
-
-        Random rand = new Random();
-        int  probability = rand.nextInt(100) + 1;
+    public void onClickButHunt(View view){
+        TextView textView = findViewById(R.id.textView1);
+        Random chanceOfBeingHit = new Random();
+        int max = 100;
+        int min = 0;
+        int variable = chanceOfBeingHit.nextInt(max-min)+min;
         numOfPingus = numOfPingus-2;
         int battlePingus = 2;
-        if (numOfPingus<=2){
+        if(numOfPingus<=2){
         }
         else{
-           if (probability<20){
-               battlePingus = battlePingus - 1;
-           }
-            if (probability<20){
+            if (variable<=20) {
                 battlePingus = battlePingus - 1;
             }
-            numOfPingus = numOfPingus+battlePingus;
-            numOfPingus = numOfPingus+battlePingus-5; //Just a practice
-            String theIntString = Integer.toString(numOfPingus);
-            textView.setText(theIntString + "Pingus");
+            variable = chanceOfBeingHit.nextInt(max-min)+min;
+            if (variable<=20){
+                battlePingus = battlePingus-1;
+            }
         }
-        return "numOfPingus";
+        numOfPingus = numOfPingus+battlePingus;
+        String theIntString = Integer.toString(numOfPingus);
+        textView.setText(theIntString + "Pingus");
+
+
+
+
+
     }
 }
