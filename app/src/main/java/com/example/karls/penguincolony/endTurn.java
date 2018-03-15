@@ -5,4 +5,8 @@ package com.example.karls.penguincolony;
  */
 
 public class endTurn {
+
+    public void endTurn(){
+
+    }
 }
