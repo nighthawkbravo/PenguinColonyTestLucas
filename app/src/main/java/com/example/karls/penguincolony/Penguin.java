@@ -13,7 +13,7 @@ import java.util.Random;
 public class Penguin extends GamePage {
 
     public int numOfPingus =20; //Initial value of penguins at the start of the game
-    //TextView numOfPingusTextView = findViewById(R.id.textView1); Start again
+    TextView numOfPingusTextView = findViewById(R.id.textView1); //Start again
 
     public void onClickButHunt(View view){
         int battlePingus = 0; //Has to reset the BattlePingu count everytime the method is called
@@ -41,10 +41,7 @@ public class Penguin extends GamePage {
 
         String theIntString = Integer.toString(numOfPingus);
 
-       // numOfPingusTextView.setText(theIntString + "Pingus");
-
-
-
+        numOfPingusTextView.setText(theIntString + "Pingus");
 
 
     }
