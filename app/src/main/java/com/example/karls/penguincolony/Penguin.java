@@ -11,7 +11,7 @@ import java.util.Random;
  */
 
 public class Penguin extends GamePage {
-
+    /*
     public int numOfPingus =20; //Initial value of penguins at the start of the game
     TextView numOfPingusTextView = findViewById(R.id.textView1); //Start again
 
@@ -44,5 +44,5 @@ public class Penguin extends GamePage {
         numOfPingusTextView.setText(theIntString + "Pingus");
 
 
-    }
+    }*/
 }
