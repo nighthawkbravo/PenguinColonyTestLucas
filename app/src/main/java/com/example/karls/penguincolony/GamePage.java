@@ -15,13 +15,14 @@ public class GamePage extends AppCompatActivity {
 //    Button huntButton;
 
     public int numOfPingus = 20;
-    TextView numOfPingusTextView = findViewById(R.id.textView1);
+    TextView numOfPingusTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_page);
 
+        this.numOfPingusTextView = findViewById(R.id.textView1);
 
         Button button = findViewById(R.id.butHunt);
         button.setOnClickListener(new View.OnClickListener() {
