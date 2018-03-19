@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.Random;
-
+// test commit
 
 public class GamePage extends AppCompatActivity {
 
