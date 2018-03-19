@@ -13,7 +13,7 @@ public class GamePage extends AppCompatActivity {
 //
 //    TextView numOfPenguinsTextView;
 //    Button huntButton;
-
+    //test for commit
     public int numOfPingus = 20;
     TextView numOfPingusTextView;
 
