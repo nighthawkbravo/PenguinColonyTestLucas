@@ -10,12 +10,12 @@ import java.util.Random;
 
 
 public class GamePage extends AppCompatActivity {
-//
-//    TextView numOfPenguinsTextView;
-//    Button huntButton;
-    //test for commit
+
     public int numOfPingus = 20;
+    public int food = 5;
     TextView numOfPingusTextView;
+    TextView foodTextView;
+    Random rand = new Random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +23,24 @@ public class GamePage extends AppCompatActivity {
         setContentView(R.layout.activity_game_page);
 
         this.numOfPingusTextView = findViewById(R.id.textView1);
+        this.foodTextView = findViewById(R.id.textView2);
 
         Button button = findViewById(R.id.butHunt);
+        Button button2 = findViewById(R.id.butEgg);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // hunt function
+                numOfPingus = (numOfPingus - 1);
+                numOfPingusTextView.setText("Num of pingus: " + numOfPingus);
+                food = food + rand.nextInt(3 + 1);
+                foodTextView.setText("Food: " + food);
+            }
+        });
+        button2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                numOfPingus = numOfPingus + rand.nextInt(1 + 1);
+                numOfPingusTextView.setText("Num of pingus: " + numOfPingus);
+                food = food - 5;
+                foodTextView.setText("Food: " + food);
             }
         });
     }
