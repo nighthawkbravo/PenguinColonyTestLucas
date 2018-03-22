@@ -33,7 +33,7 @@ public class Penguin extends GamePage {
             }
             variable = chanceOfBeingHit.nextInt(max-min)+min;
             if (variable<=20){
-                battlePingus = battlePingus-1;
+                battlePingus = battlePingus - 1;
             }
         }
         numOfPingus = numOfPingus+battlePingus;

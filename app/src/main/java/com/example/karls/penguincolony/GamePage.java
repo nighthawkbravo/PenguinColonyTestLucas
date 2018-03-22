@@ -29,18 +29,28 @@ public class GamePage extends AppCompatActivity {
         Button button2 = findViewById(R.id.butEgg);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                numOfPingus = (numOfPingus - 1);
-                numOfPingusTextView.setText("Num of pingus: " + numOfPingus);
-                food = food + rand.nextInt(3 + 1);
-                foodTextView.setText("Food: " + food);
+                if (numOfPingus == 0){
+                    numOfPingusTextView.setText("Not enough pingus " + numOfPingus);
+                }
+                else {
+                    numOfPingus = (numOfPingus - 1);
+                    numOfPingusTextView.setText("Num of pingus: " + numOfPingus);
+                    food = food + rand.nextInt(3 + 1);
+                    foodTextView.setText("Food: " + food);
+                }
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                numOfPingus = numOfPingus + rand.nextInt(1 + 1);
-                numOfPingusTextView.setText("Num of pingus: " + numOfPingus);
-                food = food - 5;
-                foodTextView.setText("Food: " + food);
+                if (food == 0){
+                        foodTextView.setText("No food " + food);
+                }
+                else {
+                    numOfPingus = numOfPingus + rand.nextInt(1 + 1);
+                    numOfPingusTextView.setText("Num of pingus: " + numOfPingus);
+                    food = food - 5;
+                    foodTextView.setText("Food: " + food);
+                }
             }
         });
     }
