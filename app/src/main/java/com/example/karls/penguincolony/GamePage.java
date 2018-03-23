@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 // test commit
@@ -37,7 +38,9 @@ public class GamePage extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (numOfPingus == 0){
-                    numOfPingusTextView.setText("Not enough pingus " + numOfPingus);
+                    Toast.makeText(getApplicationContext(),"All your penguins are dead", Toast.LENGTH_LONG).show();//notifies you that all penguins are dead
+
+                    numOfPingusTextView.setText("Num of pingus " + numOfPingus);
                 }
                 else {
                     numOfPingus = (numOfPingus - 1);
@@ -67,7 +70,7 @@ public class GamePage extends AppCompatActivity {
                     }
                     else {
                         food = 0;
-                        foodTextView.setText("No Food " + food);
+                        foodTextView.setText("Food " + food);
                         numOfPingus = numOfPingus + rand.nextInt(1 + 1);
                         //numOfPingus = chanceOfEgg.nextInt(max - min) + min;
                         //if (numOfPingus <= 20) {
@@ -119,6 +122,10 @@ public class GamePage extends AppCompatActivity {
                 numOfPingusTextView.setText(theIntString + "Pingus");
 
 
+
+//mark//
+Toast.makeText(getApplicationContext(),"This is my toast message",Toast.LENGTH_LONG).show();
+////
  */
 
 
