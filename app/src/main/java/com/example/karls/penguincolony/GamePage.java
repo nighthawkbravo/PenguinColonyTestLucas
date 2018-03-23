@@ -17,10 +17,10 @@ public class GamePage extends AppCompatActivity {
     TextView foodTextView;
     Random rand = new Random();
 
-    Random chanceOfEgg = new Random();
-    int max = 100;
-    int min = 0;
-    int egge = chanceOfEgg.nextInt(max - min) + min;
+    //Random chanceOfEgg = new Random();
+    //int max = 100;
+    //int min = 0;
+    //int egge = chanceOfEgg.nextInt(max - min) + min;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,24 +53,26 @@ public class GamePage extends AppCompatActivity {
                         foodTextView.setText("No food " + food);
                 }
                 else {
-                    //numOfPingus = numOfPingus + rand.nextInt(1 + 1);
-                    egge = chanceOfEgg.nextInt(max - min) + min;
-                    if (egge <= 10) {
-                        egge = egge +1;
-                    }
-                    numOfPingusTextView.setText("Num of pingus: " + numOfPingus);
                     if (food >= 5) {
                         food = food - 5;
                         foodTextView.setText("Food: " + food);
+
+                        numOfPingus = numOfPingus + rand.nextInt(1 + 1);
+                        numOfPingusTextView.setText("Num of pingus: " + numOfPingus);
+                        //numOfPingus = chanceOfEgg.nextInt(max - min) + min;                           //Karl's chance of egg code does not work
+                        //if (numOfPingus <= 20) {
+                        //    numOfPingus = numOfPingus + 1;
+                        //}
+                        //numOfPingusTextView.setText("Num of pingus: " + numOfPingus);
                     }
                     else {
                         food = 0;
                         foodTextView.setText("No Food " + food);
-                        //numOfPingus = numOfPingus + rand.nextInt(1 + 1);
-                        egge = chanceOfEgg.nextInt(max - min) + min;
-                        if (egge <= 20) {
-                            egge = egge + 1;
-                        }
+                        numOfPingus = numOfPingus + rand.nextInt(1 + 1);
+                        //numOfPingus = chanceOfEgg.nextInt(max - min) + min;
+                        //if (numOfPingus <= 20) {
+                        //    numOfPingus = numOfPingus + 1;
+                        //}
 
                         numOfPingusTextView.setText("Num of pingus: " + numOfPingus);
                     }
