@@ -17,6 +17,11 @@ public class GamePage extends AppCompatActivity {
     TextView foodTextView;
     Random rand = new Random();
 
+    Random chanceOfEgg = new Random();
+    int max = 100;
+    int min = 0;
+    int egge = chanceOfEgg.nextInt(max - min) + min;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +29,8 @@ public class GamePage extends AppCompatActivity {
 
         this.numOfPingusTextView = findViewById(R.id.textView1);
         this.foodTextView = findViewById(R.id.textView2);
+
+
 
         Button button = findViewById(R.id.butHunt);
         Button button2 = findViewById(R.id.butEgg);
@@ -46,10 +53,27 @@ public class GamePage extends AppCompatActivity {
                         foodTextView.setText("No food " + food);
                 }
                 else {
-                    numOfPingus = numOfPingus + rand.nextInt(1 + 1);
+                    //numOfPingus = numOfPingus + rand.nextInt(1 + 1);
+                    egge = chanceOfEgg.nextInt(max - min) + min;
+                    if (egge <= 10) {
+                        egge = egge +1;
+                    }
                     numOfPingusTextView.setText("Num of pingus: " + numOfPingus);
-                    food = food - 5;
-                    foodTextView.setText("Food: " + food);
+                    if (food >= 5) {
+                        food = food - 5;
+                        foodTextView.setText("Food: " + food);
+                    }
+                    else {
+                        food = 0;
+                        foodTextView.setText("No Food " + food);
+                        //numOfPingus = numOfPingus + rand.nextInt(1 + 1);
+                        egge = chanceOfEgg.nextInt(max - min) + min;
+                        if (egge <= 20) {
+                            egge = egge + 1;
+                        }
+
+                        numOfPingusTextView.setText("Num of pingus: " + numOfPingus);
+                    }
                 }
             }
         });
