@@ -22,23 +22,36 @@ public class GamePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_page);
 
+        //finds text boxes on the graphics side
         this.numOfPingusTextView = findViewById(R.id.textView1);
         this.foodTextView = findViewById(R.id.textView2);
 
+
+        //sets buttons as objects
         Button button = findViewById(R.id.butHunt);
         Button button2 = findViewById(R.id.butEgg);
+
+        //takes the button(hunt) object and uses a function that waits for a click
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                //every click loses a penguin
                 numOfPingus = (numOfPingus - 1);
                 numOfPingusTextView.setText("Num of pingus: " + numOfPingus);
+
+                //gives random food from 0 - 3
                 food = food + rand.nextInt(3 + 1);
                 foodTextView.setText("Food: " + food);
             }
         });
+        //takes the button2(egg) object and uses a function that waits for a click
         button2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+                //add random amount from 0 - 1 penguins to the number of penguins
                 numOfPingus = numOfPingus + rand.nextInt(1 + 1);
                 numOfPingusTextView.setText("Num of pingus: " + numOfPingus);
+
+                //every egg costs 5 food
                 food = food - 5;
                 foodTextView.setText("Food: " + food);
             }
