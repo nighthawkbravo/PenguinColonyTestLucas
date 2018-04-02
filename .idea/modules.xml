@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://H:\PLTWComputerScience\AndroidProjects\Penguin\PenguinColonyReal\.idea\PenguinColony.iml" filepath="H:\PLTWComputerScience\AndroidProjects\Penguin\PenguinColonyReal\.idea\PenguinColony.iml" />
-      <module fileurl="file://C:\Users\karls\AndroidStudioProjects\PenguinColony\PenguinColony.iml" filepath="C:\Users\karls\AndroidStudioProjects\PenguinColony\PenguinColony.iml" />
       <module fileurl="file://$PROJECT_DIR$/PenguinColonyFInal.iml" filepath="$PROJECT_DIR$/PenguinColonyFInal.iml" />
-      <module fileurl="file://C:\Users\1902087\StudioProjects\PenguinColonyFInal\PenguinColonyReal.iml" filepath="C:\Users\1902087\StudioProjects\PenguinColonyFInal\PenguinColonyReal.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
