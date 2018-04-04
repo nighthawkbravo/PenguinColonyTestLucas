@@ -39,29 +39,34 @@ public class GamePage extends AppCompatActivity {
             public void onClick(View v) {
                 if (numOfPingus == 0){
                     Toast.makeText(getApplicationContext(),"All your penguins are dead", Toast.LENGTH_LONG).show();//notifies you that all penguins are dead
-                    String x = "Num of pingus " + numOfPingus;
-                    numOfPingusTextView.setText(x);
+                    String NewNumOfPengus = "Num of pingus " + numOfPingus;
+                    numOfPingusTextView.setText(NewNumOfPengus);
                 }
                 else {
                     numOfPingus = (numOfPingus - 1);
-                    numOfPingusTextView.setText("Num of pingus: " + numOfPingus);
+                    String NewNumOfPengus = "Num of pingus " + numOfPingus;
+                    numOfPingusTextView.setText(NewNumOfPengus);
                     food = food + rand.nextInt(3 + 1);
-                    foodTextView.setText("Food: " + food);
+                    String foodGain = "Food: " + food;
+                    foodTextView.setText(foodGain);
                 }
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (food == 0){
-                        foodTextView.setText("No food " + food);
+                    String noFood = "No food " + food;
+                    foodTextView.setText(noFood);
                 }
                 else {
                     if (food >= 5) {
                         food = food - 5;
-                        foodTextView.setText("Food: " + food);
+                        String foodLoss = "Food: " + food;
+                        foodTextView.setText(foodLoss);
 
                         numOfPingus = numOfPingus + rand.nextInt(1 + 1);
-                        numOfPingusTextView.setText("Num of pingus: " + numOfPingus);
+                        String NewNumOfPengus = "Num of pingus " + numOfPingus;
+                        numOfPingusTextView.setText(NewNumOfPengus);
                         //numOfPingus = chanceOfEgg.nextInt(max - min) + min;                           //Karl's chance of egg code does not work
                         //if (numOfPingus <= 20) {
                         //    numOfPingus = numOfPingus + 1;
@@ -70,14 +75,15 @@ public class GamePage extends AppCompatActivity {
                     }
                     else {
                         food = 0;
-                        foodTextView.setText("Food " + food);
+                        String foodGain = "Food " + food;
+                        foodTextView.setText(foodGain);
                         numOfPingus = numOfPingus + rand.nextInt(1 + 1);
                         //numOfPingus = chanceOfEgg.nextInt(max - min) + min;
                         //if (numOfPingus <= 20) {
                         //    numOfPingus = numOfPingus + 1;
                         //}
-
-                        numOfPingusTextView.setText("Num of pingus: " + numOfPingus);
+                        String NewNumOfPengus = "Num of pingus " + numOfPingus;
+                        numOfPingusTextView.setText(NewNumOfPengus);
                     }
                 }
             }
