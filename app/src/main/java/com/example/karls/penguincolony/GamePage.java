@@ -124,7 +124,7 @@ public class GamePage extends AppCompatActivity {
 
 
 //mark//
-Toast.makeText(getApplicationContext(),"This is my toast message",Toast.LENGTH_LONG).show();
+Toast.makeText(getApplicationContext(),"This is my toast message",Toast.LENGTH_LONG).show(); Comment
 ////
  */
 
