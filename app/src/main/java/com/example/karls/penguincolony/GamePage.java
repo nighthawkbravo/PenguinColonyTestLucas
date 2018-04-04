@@ -39,8 +39,8 @@ public class GamePage extends AppCompatActivity {
             public void onClick(View v) {
                 if (numOfPingus == 0){
                     Toast.makeText(getApplicationContext(),"All your penguins are dead", Toast.LENGTH_LONG).show();//notifies you that all penguins are dead
-
-                    numOfPingusTextView.setText("Num of pingus " + numOfPingus);
+                    String x = "Num of pingus " + numOfPingus;
+                    numOfPingusTextView.setText(x);
                 }
                 else {
                     numOfPingus = (numOfPingus - 1);
@@ -122,7 +122,7 @@ public class GamePage extends AppCompatActivity {
                 numOfPingusTextView.setText(theIntString + "Pingus");
 
 
-
+//
 //mark//
 Toast.makeText(getApplicationContext(),"This is my toast message",Toast.LENGTH_LONG).show(); Comment
 ////
