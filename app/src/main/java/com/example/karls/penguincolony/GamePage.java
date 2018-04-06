@@ -10,6 +10,8 @@ import android.widget.Toast;
 import java.util.Random;
 
 
+//test commit
+
 public class GamePage extends AppCompatActivity {
 
     public int numOfPingus = 100;
