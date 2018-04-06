@@ -14,8 +14,8 @@ import java.util.Random;
 
 public class GamePage extends AppCompatActivity {
 
-    public int numOfPingus = 100;
-    public int food = 150;
+    public int numOfPingus = 10;
+    public int food = 5;
     public int day = 0;
     TextView numOfPingusTextView;
     TextView foodTextView;
@@ -45,15 +45,13 @@ public class GamePage extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"All your penguins are dead", Toast.LENGTH_LONG).show();//notifies you that all penguins are dead
 
 
-                    numOfPingusTextView.setText("Num of pingus " + numOfPingus);
+                    numOfPingusTextView.setText("Pingus " + numOfPingus);
                 }
                 else {
                     numOfPingus = (numOfPingus - 1);
-                    String NewNumOfPengus = "Num of pingus " + numOfPingus;
+                    String NewNumOfPengus = "Pingus " + numOfPingus;
                     numOfPingusTextView.setText(NewNumOfPengus);
-                    //food = food + rand.nextInt(4);
-                    String foodGain = "Food: " + food;
-                    foodTextView.setText(foodGain);
+
                     day = day + 1;
                     if (day % 5 == 0){
                         if (food < numOfPingus){
@@ -66,6 +64,10 @@ public class GamePage extends AppCompatActivity {
                     }
                     String daySetText = "Day: " + day;
                     dayCount.setText(daySetText);
+
+                    food = food + rand.nextInt(4);
+                    String foodGain = "Food: " + food;
+                    foodTextView.setText(foodGain);
                 }
             }
         });
@@ -92,7 +94,7 @@ public class GamePage extends AppCompatActivity {
 
 /*
 
-    Every 5 days, every penguin eats 1 food
+
 
 
 
