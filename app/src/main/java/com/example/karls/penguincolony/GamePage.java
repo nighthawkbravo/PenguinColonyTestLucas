@@ -8,130 +8,90 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Random;
-// test commit
+
 
 public class GamePage extends AppCompatActivity {
 
-    public int numOfPingus = 20;
-    public int food = 5;
+    public int numOfPingus = 100;
+    public int food = 150;
+    public int day = 0;
     TextView numOfPingusTextView;
     TextView foodTextView;
+    TextView dayCount;
     Random rand = new Random();
 
-    //Random chanceOfEgg = new Random();
-    //int max = 100;
-    //int min = 0;
-    //int egge = chanceOfEgg.nextInt(max - min) + min;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_page);
 
+        this.dayCount = findViewById(R.id.dayTextView);
         this.numOfPingusTextView = findViewById(R.id.textView1);
         this.foodTextView = findViewById(R.id.textView2);
 
 
-
         Button button = findViewById(R.id.butHunt);
         Button button2 = findViewById(R.id.butEgg);
+
+
         button.setOnClickListener(new View.OnClickListener() {
+            //Hunt button
             public void onClick(View v) {
                 if (numOfPingus == 0){
                     Toast.makeText(getApplicationContext(),"All your penguins are dead", Toast.LENGTH_LONG).show();//notifies you that all penguins are dead
-                    String NewNumOfPengus = "Num of pingus " + numOfPingus;
-                    numOfPingusTextView.setText(NewNumOfPengus);
+
+
+                    numOfPingusTextView.setText("Num of pingus " + numOfPingus);
                 }
                 else {
                     numOfPingus = (numOfPingus - 1);
                     String NewNumOfPengus = "Num of pingus " + numOfPingus;
                     numOfPingusTextView.setText(NewNumOfPengus);
-                    food = food + rand.nextInt(3 + 1);
+                    //food = food + rand.nextInt(4);
                     String foodGain = "Food: " + food;
                     foodTextView.setText(foodGain);
+                    day = day + 1;
+                    if (day % 5 == 0){
+                        if (food < numOfPingus){
+                            numOfPingus = numOfPingus - (numOfPingus - food);
+                            food = 0;
+                        }
+                        else{
+                            food = food - numOfPingus;
+                        }
+                    }
+                    String daySetText = "Day: " + day;
+                    dayCount.setText(daySetText);
                 }
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
+            //Egg button
             public void onClick(View v) {
                 if (food == 0){
-                    String noFood = "No food " + food;
+                    String noFood = "Food: " + food;
                     foodTextView.setText(noFood);
+                    Toast.makeText(getApplicationContext(),"Out Of Food", Toast.LENGTH_LONG).show();//notifies you that food is gone
                 }
-                else {
-                    if (food >= 5) {
-                        food = food - 5;
-                        String foodLoss = "Food: " + food;
-                        foodTextView.setText(foodLoss);
-
-                        numOfPingus = numOfPingus + rand.nextInt(1 + 1);
-                        String NewNumOfPengus = "Num of pingus " + numOfPingus;
-                        numOfPingusTextView.setText(NewNumOfPengus);
-                        //numOfPingus = chanceOfEgg.nextInt(max - min) + min;                           //Karl's chance of egg code does not work
-                        //if (numOfPingus <= 20) {
-                        //    numOfPingus = numOfPingus + 1;
-                        //}
-                        //numOfPingusTextView.setText("Num of pingus: " + numOfPingus);
-                    }
-                    else {
-                        food = 0;
-                        String foodGain = "Food " + food;
-                        foodTextView.setText(foodGain);
-                        numOfPingus = numOfPingus + rand.nextInt(1 + 1);
-                        //numOfPingus = chanceOfEgg.nextInt(max - min) + min;
-                        //if (numOfPingus <= 20) {
-                        //    numOfPingus = numOfPingus + 1;
-                        //}
-                        String NewNumOfPengus = "Num of pingus " + numOfPingus;
-                        numOfPingusTextView.setText(NewNumOfPengus);
-                    }
+                if (food >= 1) {
+                    food = food - 1;
+                    String foodLoss = "Food: " + food;
+                    foodTextView.setText(foodLoss);
+                    numOfPingus = numOfPingus + rand.nextInt(2);
+                    String NewNumOfPengus = "Num of pingus " + numOfPingus;
+                    numOfPingusTextView.setText(NewNumOfPengus);
                 }
             }
         });
     }
 }
 
-//        numOfPenguinsTextView= findViewById(R.id.textView1);
-//        huntButton = findViewById(R.id.butHunt);
-//        numOfPenguinsTextView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                numOfPenguinsTextView.setText("Test");
-//            }
-//        });
+/*
+
+    Every 5 days, every penguin eats 1 food
 
 
-/*int battlePingus = 0; //Has to reset the BattlePingu count everytime the method is called
-                battlePingus = 2;
-                Random chanceOfBeingHit = new Random();
-                int max = 100;
-                int min = 0;
-                int variable = chanceOfBeingHit.nextInt(max - min) + min;
-                numOfPingus = numOfPingus - 2;
 
-
-                if (numOfPingus <= 2) {
-                } else {
-                    if (variable <= 20) {
-                        battlePingus = battlePingus - 1;
-                    }
-                    variable = chanceOfBeingHit.nextInt(max - min) + min;
-                    if (variable <= 20) {
-                        battlePingus = battlePingus - 1;
-                    }
-                }
-                numOfPingus = numOfPingus + battlePingus;
-
-
-                String theIntString = Integer.toString(numOfPingus);
-
-                numOfPingusTextView.setText(theIntString + "Pingus");
-
-
-//
-//mark//
-Toast.makeText(getApplicationContext(),"This is my toast message",Toast.LENGTH_LONG).show(); Comment
-////
  */
-
-

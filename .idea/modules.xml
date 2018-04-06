@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/PenguinColonyFInal.iml" filepath="$PROJECT_DIR$/PenguinColonyFInal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PenguinColony.iml" filepath="$PROJECT_DIR$/PenguinColony.iml" />
+      <module fileurl="file://C:\Users\1802070\StudioProjects\PenguinColony\PenguinColonyFInal.iml" filepath="C:\Users\1802070\StudioProjects\PenguinColony\PenguinColonyFInal.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
