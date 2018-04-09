@@ -10,8 +10,6 @@ import android.widget.Toast;
 import java.util.Random;
 
 
-//test commit
-
 public class GamePage extends AppCompatActivity {
 
     public int numOfPingus = 10;
@@ -71,8 +69,9 @@ public class GamePage extends AppCompatActivity {
                 }
             }
         });
+
+        //Egg button
         button2.setOnClickListener(new View.OnClickListener() {
-            //Egg button
             public void onClick(View v) {
                 if (food == 0){
                     String noFood = "Food: " + food;
@@ -91,11 +90,3 @@ public class GamePage extends AppCompatActivity {
         });
     }
 }
-
-/*
-
-
-
-
-
- */
