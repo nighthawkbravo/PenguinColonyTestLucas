@@ -19,31 +19,6 @@ import java.util.TimerTask;
 
 
 public class GamePage extends AppCompatActivity {
-
-    //Screen Size
-    private int screenWidth;
-    private int screenHeight;
-
-    //Pingu Image
-    private ImageView penguinsprite;
-
-    //Position
-
-    private float pingUpX;
-    private float pinguUpY;
-    private float pingDownX;
-    private float PingDownY;
-    private float PingLeftX;
-    private float PingLeftY;
-    private float PingRightX;
-    private float PingRightY;
-
-    //Initalizer
-
-    private Handler handler = new Handler();
-    private Timer timer = new Timer();
-
-
     //Game Variables
 
     public int numOfPingus = 10;
@@ -60,38 +35,6 @@ public class GamePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_page);
-
-        //Not sure what it does yet
-        penguinsprite = (ImageView)findViewById(R.id.penguinsprite);
-
-        //Getting the screensize
-        WindowManager wm = getWindowManager();
-        Display disp = wm.getDefaultDisplay();
-        Point size = new Point();
-        disp.getSize(size);
-        screenWidth = size.x;
-        screenHeight = size.y;
-
-        //Starts the timer
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        changePos();
-
-                    }
-                });
-            }
-        },0,20);{
-        public void changePos(){
-            //Up
-                pingUpX-=10;
-                if pinguinsprite.getY() + ping //Minute 6:14
-            }
-
-        }
 
         this.dayCount = findViewById(R.id.dayTextView);
         this.numOfPingusTextView = findViewById(R.id.textView1);
@@ -149,7 +92,7 @@ public class GamePage extends AppCompatActivity {
                     String foodLoss = "Food: " + food;
                     foodTextView.setText(foodLoss);
                     numOfPingus = numOfPingus + rand.nextInt(2);
-                    String NewNumOfPengus = "Num of pingus " + numOfPingus;
+                    String NewNumOfPengus = "Pingus " + numOfPingus;
                     numOfPingusTextView.setText(NewNumOfPengus);
                 }
             }
