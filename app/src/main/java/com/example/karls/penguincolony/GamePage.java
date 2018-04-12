@@ -1,25 +1,16 @@
 package com.example.karls.penguincolony;
 
-import android.graphics.Point;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Display;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.sql.Time;
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
 
 
 public class GamePage extends AppCompatActivity {
-    //Game Variables
 
     public int numOfPingus = 10;
     public int food = 5;
@@ -92,7 +83,7 @@ public class GamePage extends AppCompatActivity {
                     String foodLoss = "Food: " + food;
                     foodTextView.setText(foodLoss);
                     numOfPingus = numOfPingus + rand.nextInt(2);
-                    String NewNumOfPengus = "Pingus " + numOfPingus;
+                    String NewNumOfPengus = "Num of pingus " + numOfPingus;
                     numOfPingusTextView.setText(NewNumOfPengus);
                 }
             }
