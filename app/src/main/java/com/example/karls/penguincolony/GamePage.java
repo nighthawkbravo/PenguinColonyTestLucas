@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import java.util.Random;
 
-
+//Old code that works
 public class GamePage extends AppCompatActivity {
 
     public int numOfPingus = 10;
