@@ -12,9 +12,9 @@ import java.util.Random;
 //Old code that works
 public class GamePage extends AppCompatActivity {
 
-    public int numOfPingus = 10;
-    public int food = 5;
-    public int day = 0;
+
+    ColonyData PinguLibrary = new ColonyData();
+
     TextView numOfPingusTextView;
     TextView foodTextView;
     TextView dayCount;
@@ -35,36 +35,41 @@ public class GamePage extends AppCompatActivity {
         Button button = findViewById(R.id.butHunt);
         Button button2 = findViewById(R.id.butEgg);
 
-
+        //Hunt Button
         button.setOnClickListener(new View.OnClickListener() {
             //Hunt button
             public void onClick(View v) {
-                if (numOfPingus == 0){
-                    Toast.makeText(getApplicationContext(),"All your penguins are dead", Toast.LENGTH_LONG).show();//notifies you that all penguins are dead
-
-
-                    numOfPingusTextView.setText("Pingus " + numOfPingus);
+                //checks penguin count
+                if (PinguLibrary.getNumOfPingus() == 0){
+                    //if all pingus are dead, then toast message
+                    Toast.makeText(getApplicationContext(),"All your penguins are dead", Toast.LENGTH_LONG).show();
+                    numOfPingusTextView.setText("Pingus " + PinguLibrary.getNumOfPingus());
                 }
                 else {
-                    numOfPingus = (numOfPingus - 1);
-                    String NewNumOfPengus = "Pingus " + numOfPingus;
+                    //or... decrease pingu count by 1
+                    PinguLibrary.setNumOfPingus(PinguLibrary.getNumOfPingus()-1);
+                    String NewNumOfPengus = "Pingus " + PinguLibrary.getNumOfPingus();
                     numOfPingusTextView.setText(NewNumOfPengus);
 
-                    day = day + 1;
-                    if (day % 5 == 0){
-                        if (food < numOfPingus){
-                            numOfPingus = numOfPingus - (numOfPingus - food);
-                            food = 0;
+                    //this adds a day to the counter
+                    PinguLibrary.setDay(PinguLibrary.getDay()+1);
+
+                    //Every five days, all pingus eat, exra pingus with no food die if they don't eat.
+                    if (PinguLibrary.getDay() % 5 == 0){
+                        if (PinguLibrary.getFood() < PinguLibrary.getNumOfPingus()){
+                            PinguLibrary.setNumOfPingus(PinguLibrary.getNumOfPingus()-(PinguLibrary.getNumOfPingus()-PinguLibrary.getFood()));
+                            PinguLibrary.setNumOfPingus(0);
                         }
                         else{
-                            food = food - numOfPingus;
+                            PinguLibrary.setFood(PinguLibrary.getFood()-PinguLibrary.getNumOfPingus());
                         }
                     }
-                    String daySetText = "Day: " + day;
+                    String daySetText = "Day: " + PinguLibrary.getDay();
                     dayCount.setText(daySetText);
 
-                    food = food + rand.nextInt(4);
-                    String foodGain = "Food: " + food;
+                    //adds random food from 0 - 3
+                    PinguLibrary.setFood(PinguLibrary.getFood()+rand.nextInt(4));
+                    String foodGain = "Food: " + PinguLibrary.getFood();
                     foodTextView.setText(foodGain);
                 }
             }
@@ -73,17 +78,20 @@ public class GamePage extends AppCompatActivity {
         //Egg button
         button2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (food == 0){
-                    String noFood = "Food: " + food;
+                // food is used to make an egg. Zero food = no new pingus
+                if (PinguLibrary.getFood() == 0){
+                    String noFood = "Food: " + PinguLibrary.getFood();
                     foodTextView.setText(noFood);
                     Toast.makeText(getApplicationContext(),"Out Of Food", Toast.LENGTH_LONG).show();//notifies you that food is gone
                 }
-                if (food >= 1) {
-                    food = food - 1;
-                    String foodLoss = "Food: " + food;
+
+                // This will add a pingu at the cost of 1 food
+                if (PinguLibrary.getFood() > 0) {
+                    PinguLibrary.setFood(PinguLibrary.getFood()-1);
+                    String foodLoss = "Food: " + PinguLibrary.getFood();
                     foodTextView.setText(foodLoss);
-                    numOfPingus = numOfPingus + rand.nextInt(2);
-                    String NewNumOfPengus = "Num of pingus " + numOfPingus;
+                    PinguLibrary.setNumOfPingus(PinguLibrary.getNumOfPingus()+rand.nextInt(2));
+                    String NewNumOfPengus = "Pingus " + PinguLibrary.getNumOfPingus();
                     numOfPingusTextView.setText(NewNumOfPengus);
                 }
             }
