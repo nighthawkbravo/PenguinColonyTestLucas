@@ -94,10 +94,17 @@
         android:orientation="vertical"
         app:layout_constraintGuide_begin="20dp" />
 
-    <!--<ImageView
+    <ImageView
+        android:id="@+id/penguinsprite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/penguinsprite"
-        android:id="@+id/penguinsprite"/>-->
+        android:layout_marginLeft="16dp"
+        android:adjustViewBounds="true"
+        android:maxHeight="40dp"
+        android:maxWidth="40dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/movingpenguin"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:layout_editor_absoluteY="4dp"/>
 
 </android.support.constraint.ConstraintLayout>

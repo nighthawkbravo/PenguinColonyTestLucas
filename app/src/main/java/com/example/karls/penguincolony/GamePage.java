@@ -1,16 +1,48 @@
 package com.example.karls.penguincolony;
 
+import android.graphics.Point;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 //Old code that works
 public class GamePage extends AppCompatActivity {
+
+    //Screen size
+
+    private double screenWidth;
+    private double screenHieght;
+
+    //Image
+
+    private ImageView penguinImage;
+
+    //Position
+
+    private double penguinUpX;
+    private double penguinUpY;
+    private float penguinDownX;
+    private float penguinDownY;
+    private float penguinLeftX;
+    private float penguinLeftY;
+    private float penguinRightX;
+    private float penuinRightY;
+
+    //Initalize Class
+
+    private Handler handler = new Handler();
+    private Timer timer = new Timer();
 
 
     ColonyData PinguLibrary = new ColonyData();
@@ -96,5 +128,56 @@ public class GamePage extends AppCompatActivity {
                 }
             }
         });
+
+        //Movement stuff
+
+        penguinImage = (ImageView) findViewById(R.id.penguinsprite);
+
+        //Gets screen size
+
+        WindowManager wm = getWindowManager();
+        Display disp = wm.getDefaultDisplay();
+        Point size = new Point();
+        disp.getSize(size);
+        screenWidth = size.x;
+        screenHieght = size.y;
+
+        //Timer
+
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        changePos();
+                    }
+                });
+            }
+        }, 0, 20);
+        screenHieght = screenHieght/1.5; // Maybe will reduce the travel
+
+
+    }
+
+    //WORK ON METHOD SO WHEN IT REACHES CERTAIN HEIGHT IT WILL GO BACK DOWN
+    public void changePos(){
+
+        //Makes the penguin move up
+        penguinUpY -=3;//Controls speed of penguin, originally at 10
+        if (penguinImage.getY() + penguinImage.getHeight() <0){
+            penguinUpX = 10; //(float)Math.floor(Math.random() * (screenWidth - penguinImage.getWidth())); The 10 keeps the penguin in the position and not random, find out a way to make it more dynamic
+            penguinUpY = screenHieght + 100;
+        }
+
+
+        penguinImage.setX((float)penguinUpX);
+        penguinImage.setY((float)penguinUpY);
+
+        //Supposed to go down, not final yet
+        if(penguinImage.getHeight() >= (penguinImage.getY()/3)){
+
+
+        }
     }
 }

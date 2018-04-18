@@ -3,9 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PenguinColony.iml" filepath="$PROJECT_DIR$/PenguinColony.iml" />
-      <module fileurl="file://C:\Users\karls\StudioProjects\PenguinColonyFinal\PenguinColony.iml" filepath="C:\Users\karls\StudioProjects\PenguinColonyFinal\PenguinColony.iml" />
-      <module fileurl="file://C:\Users\1802070\StudioProjects\PenguinColony\PenguinColonyFInal.iml" filepath="C:\Users\1802070\StudioProjects\PenguinColony\PenguinColonyFInal.iml" />
-      <module fileurl="file://C:\Users\1802070\StudioProjects\PenguinColony\PenguinColonyFinal.iml" filepath="C:\Users\1802070\StudioProjects\PenguinColony\PenguinColonyFinal.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
