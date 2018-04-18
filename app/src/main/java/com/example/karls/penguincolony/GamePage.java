@@ -118,6 +118,7 @@ public class GamePage extends AppCompatActivity {
                 }
 
                 // This will add a pingu at the cost of 1 food
+
                 if (PinguLibrary.getFood() > 0) {
                     PinguLibrary.setFood(PinguLibrary.getFood()-1);
                     String foodLoss = "Food: " + PinguLibrary.getFood();
