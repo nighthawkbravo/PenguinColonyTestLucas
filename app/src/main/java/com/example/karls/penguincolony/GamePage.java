@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.FieldPosition;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -87,7 +88,7 @@ public class GamePage extends AppCompatActivity {
                     PinguLibrary.setDay(PinguLibrary.getDay()+1);
 
                     //Every five days, all pingus eat, exra pingus with no food die if they don't eat.
-                    if (PinguLibrary.getDay() % 5 == 0){
+                    if (PinguLibrary.getDay() % 20 == 0){
                         if (PinguLibrary.getFood() < PinguLibrary.getNumOfPingus()){
                             PinguLibrary.setNumOfPingus(PinguLibrary.getNumOfPingus()-(PinguLibrary.getNumOfPingus()-PinguLibrary.getFood()));
                             PinguLibrary.setNumOfPingus(0);
@@ -166,8 +167,8 @@ public class GamePage extends AppCompatActivity {
 
         //Makes the penguin move up
         penguinUpY -=3;//Controls speed of penguin, originally at 10
-        if (penguinImage.getY() + penguinImage.getHeight() <0){
-            penguinUpX = 10; //(float)Math.floor(Math.random() * (screenWidth - penguinImage.getWidth())); The 10 keeps the penguin in the position and not random, find out a way to make it more dynamic
+        if (penguinImage.getY() + penguinImage.getHeight() <= penguinUpY){
+            penguinUpX = PinguLibrary.getPosition() + rand.nextInt(250) + 10; //The 10 keeps the penguin in the position and not random, find out a way to make it more dynamic
             penguinUpY = screenHieght + 100;
         }
 
@@ -176,8 +177,8 @@ public class GamePage extends AppCompatActivity {
         penguinImage.setY((float)penguinUpY);
 
         //Supposed to go down, not final yet
-        if(penguinImage.getHeight() >= (penguinImage.getY()/3)){
-
+        if(penguinImage.getHeight() >= (penguinImage.getY()/7)){
+            penguinUpY = screenHieght + 100;
 
         }
     }

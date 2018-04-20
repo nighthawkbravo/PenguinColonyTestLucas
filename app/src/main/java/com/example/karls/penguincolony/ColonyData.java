@@ -10,11 +10,15 @@ public class ColonyData {
     private int food;
     private int day;
 
+    private double Position;
+
 
     public ColonyData() {
         this.numOfPingus = 10;
         this.food = 5;
         this.day = 0;
+
+        this.Position = 100;
     }
 
     //getters
@@ -28,6 +32,8 @@ public class ColonyData {
         return day;
     }
 
+    public double getPosition() {return Position;}
+
     //Setters
     public void setNumOfPingus(int numOfPingus) {
         this.numOfPingus = numOfPingus;
@@ -38,4 +44,6 @@ public class ColonyData {
     public void setDay(int day) {
         this.day = day;
     }
+
+    public void setPosition(double Position) {this.Position = Position;}
 }
