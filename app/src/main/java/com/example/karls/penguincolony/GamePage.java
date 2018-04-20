@@ -57,6 +57,7 @@ public class GamePage extends AppCompatActivity {
     Random rand = new Random();
 
 
+    //dialog
     public void showDialog() {
         int mStackLevel=1;
         mStackLevel++;
