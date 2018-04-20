@@ -1,7 +1,11 @@
 package com.example.karls.penguincolony;
 
+import android.app.DialogFragment;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.graphics.Point;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Display;
@@ -53,6 +57,31 @@ public class GamePage extends AppCompatActivity {
     Random rand = new Random();
 
 
+    public void showDialog() {
+        int mStackLevel=1;
+        mStackLevel++;
+
+        // DialogFragment.show() will take care of adding the fragment
+        // in a transaction.  We also want to remove any currently showing
+        // dialog, so make our own transaction and take care of that here.
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+
+        // Create and show the dialog.
+        DialogFragment newFragment = MyDialogFragment.newInstance(mStackLevel);
+        newFragment.show(ft, "dialog");
+    }
+
+    public void endGame(){
+        if (PinguLibrary.getNumOfPingus() == 0 && PinguLibrary.getFood() == 0) {
+            showDialog();
+        }
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,9 +101,16 @@ public class GamePage extends AppCompatActivity {
             //Hunt button
             public void onClick(View v) {
                 //checks penguin count
+
+                endGame();
+
+
                 if (PinguLibrary.getNumOfPingus() == 0){
                     //if all pingus are dead, then toast message
-                    Toast.makeText(getApplicationContext(),"All your penguins are dead", Toast.LENGTH_LONG).show();
+
+
+
+                    //Toast.makeText(getApplicationContext(),"All your penguins are dead", Toast.LENGTH_LONG).show();
                     numOfPingusTextView.setText("Pingus " + PinguLibrary.getNumOfPingus());
                 }
                 else {
@@ -87,7 +123,7 @@ public class GamePage extends AppCompatActivity {
                     PinguLibrary.setDay(PinguLibrary.getDay()+1);
 
                     //Every five days, all pingus eat, exra pingus with no food die if they don't eat.
-                    if (PinguLibrary.getDay() % 5 == 0){
+                    if (PinguLibrary.getDay() % 20 == 0){
                         if (PinguLibrary.getFood() < PinguLibrary.getNumOfPingus()){
                             PinguLibrary.setNumOfPingus(PinguLibrary.getNumOfPingus()-(PinguLibrary.getNumOfPingus()-PinguLibrary.getFood()));
                             PinguLibrary.setNumOfPingus(0);
@@ -110,11 +146,14 @@ public class GamePage extends AppCompatActivity {
         //Egg button
         button2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+                endGame();
+
                 // food is used to make an egg. Zero food = no new pingus
                 if (PinguLibrary.getFood() == 0){
                     String noFood = "Food: " + PinguLibrary.getFood();
                     foodTextView.setText(noFood);
-                    Toast.makeText(getApplicationContext(),"Out Of Food", Toast.LENGTH_LONG).show();//notifies you that food is gone
+                    //Toast.makeText(getApplicationContext(),"Out Of Food", Toast.LENGTH_LONG).show();//notifies you that food is gone
                 }
 
                 // This will add a pingu at the cost of 1 food
@@ -129,6 +168,15 @@ public class GamePage extends AppCompatActivity {
                 }
             }
         });
+
+
+
+
+
+
+
+
+
 
         //Movement stuff
 
