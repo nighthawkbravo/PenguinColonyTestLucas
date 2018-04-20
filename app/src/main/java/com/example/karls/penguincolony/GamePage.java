@@ -215,6 +215,7 @@ public class GamePage extends AppCompatActivity {
     public void changePos(){
 
         //Makes the penguin move up
+        //Also moves it side to side from each reset process
         penguinUpY -=3;//Controls speed of penguin, originally at 10
         if (penguinImage.getY() + penguinImage.getHeight() <= penguinUpY){
             penguinUpX = PinguLibrary.getPosition() + rand.nextInt(250) + 10; //The 10 keeps the penguin in the position and not random, find out a way to make it more dynamic
@@ -225,7 +226,7 @@ public class GamePage extends AppCompatActivity {
         penguinImage.setX((float)penguinUpX);
         penguinImage.setY((float)penguinUpY);
 
-        //Supposed to go down, not final yet
+        //Controls where the penguin will reset on the screen
         if(penguinImage.getHeight() >= (penguinImage.getY()/7)){
             penguinUpY = screenHieght + 100;
 
