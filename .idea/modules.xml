@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/PenguinColonyReal.iml" filepath="$PROJECT_DIR$/PenguinColonyReal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PenguinColonyTestLucas.iml" filepath="$PROJECT_DIR$/PenguinColonyTestLucas.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
