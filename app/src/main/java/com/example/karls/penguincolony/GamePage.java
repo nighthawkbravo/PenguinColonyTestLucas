@@ -3,23 +3,15 @@ package com.example.karls.penguincolony;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
-import android.graphics.Point;
 import android.os.Handler;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Display;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.text.FieldPosition;
 import java.util.Random;
 import java.util.Timer;
-import java.util.TimerTask;
 
 //Old code that works
 public class GamePage extends AppCompatActivity {
@@ -31,9 +23,9 @@ public class GamePage extends AppCompatActivity {
     private Timer timer = new Timer();
 
 
-    ColonyData PinguLibrary = new ColonyData();
+    ColonyData SaharaLib = new ColonyData();
 
-    TextView numOfPingusTextView;
+    TextView numOfZebrasTextView;
     TextView foodTextView;
     TextView dayCount;
     Random rand = new Random();
@@ -60,7 +52,7 @@ public class GamePage extends AppCompatActivity {
     }
 
     public void endGame() {
-        if (PinguLibrary.getNumOfPingus() == 0 && PinguLibrary.getFood() == 0) {
+        if (SaharaLib.getNumOfZebras() == 0 && SaharaLib.getFood() == 0) {
             showDialog();
         }
     }
@@ -74,145 +66,81 @@ public class GamePage extends AppCompatActivity {
         setContentView(R.layout.activity_game_page);
 
         this.dayCount = findViewById(R.id.dayTextView);
-        this.numOfPingusTextView = findViewById(R.id.textView1);
+        this.numOfZebrasTextView = findViewById(R.id.textView1);
         this.foodTextView = findViewById(R.id.textView2);
 
 
         Button button = findViewById(R.id.butHunt);
         Button button2 = findViewById(R.id.butEgg);
 
-        //Hunt Button
+        //Graze Button
         button.setOnClickListener(new View.OnClickListener() {
-            //Hunt button
             public void onClick(View v) {
                 //checks penguin count
 
                 endGame();
 
 
-                if (PinguLibrary.getNumOfPingus() == 0) {
-                    //if all pingus are dead, then toast message
+                if (SaharaLib.getNumOfZebras() == 0) {
+                    //if all Zebras are dead, then toast message
 
 
                     //Toast.makeText(getApplicationContext(),"All your penguins are dead", Toast.LENGTH_LONG).show();
-                    numOfPingusTextView.setText("Zebras " + PinguLibrary.getNumOfPingus());
+                    numOfZebrasTextView.setText("Zebras: " + SaharaLib.getNumOfZebras());
                 } else {
-                    //or... decrease pingu count by 1
-                    PinguLibrary.setNumOfPingus(PinguLibrary.getNumOfPingus() - rand.nextInt(2));
-                    String NewNumOfPengus = "Zebras " + PinguLibrary.getNumOfPingus();
-                    numOfPingusTextView.setText(NewNumOfPengus);
+                    //or... decrease Zebra count by 0 or 1
+                    SaharaLib.setNumOfAnimals(SaharaLib.getNumOfZebras() - rand.nextInt(2));
+                    String NewNumOfPengus = "Zebras: " + SaharaLib.getNumOfZebras();
+                    numOfZebrasTextView.setText(NewNumOfPengus);
 
                     //this adds a day to the counter
-                    PinguLibrary.setDay(PinguLibrary.getDay() + 1);
+                    SaharaLib.setDay(SaharaLib.getDay() + 1);
 
-                    //Every five days, all pingus eat, exra pingus with no food die if they don't eat.
-                    if (PinguLibrary.getDay() % 20 == 0) {
-                        if (PinguLibrary.getFood() < PinguLibrary.getNumOfPingus()) {
-                            PinguLibrary.setNumOfPingus(PinguLibrary.getNumOfPingus() - (PinguLibrary.getNumOfPingus() - PinguLibrary.getFood()));
-                            PinguLibrary.setNumOfPingus(0);
+                    //Every five days, all Zebras eat, extra Zebras with no food die if they don't eat.
+                    if (SaharaLib.getDay() % 20 == 0) {
+                        if (SaharaLib.getFood() < SaharaLib.getNumOfZebras()) {
+                            SaharaLib.setNumOfAnimals(SaharaLib.getNumOfZebras() - (SaharaLib.getNumOfZebras() - SaharaLib.getFood()));
+                            SaharaLib.setNumOfAnimals(0);
                         } else {
-                            PinguLibrary.setFood(PinguLibrary.getFood() - PinguLibrary.getNumOfPingus());
+                            SaharaLib.setFood(SaharaLib.getFood() - SaharaLib.getNumOfZebras());
                         }
                     }
-                    String daySetText = "Day: " + PinguLibrary.getDay();
+                    String daySetText = "Day: " + SaharaLib.getDay();
                     dayCount.setText(daySetText);
 
                     //adds random food from 0 or 3
-                    PinguLibrary.setFood(PinguLibrary.getFood() + 3*rand.nextInt(2));
-                    String foodGain = "Grass: " + PinguLibrary.getFood();
+                    SaharaLib.setFood(SaharaLib.getFood() + 3*rand.nextInt(2));
+                    String foodGain = "Grass: " + SaharaLib.getFood();
                     foodTextView.setText(foodGain);
                 }
             }
         });
 
-        //Egg button
+        //Reproduce button
         button2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
                 endGame();
 
-                // food is used to make an egg. Zero food = no new pingus
-                if (PinguLibrary.getFood() < 3) {
-                    String noFood = "Grass: " + PinguLibrary.getFood();
+                // grass is used to make a Zebra. Zero grass = no new Zebras
+                if (SaharaLib.getFood() < 3) {
+                    String noFood = "Grass: " + SaharaLib.getFood();
                     foodTextView.setText(noFood);
                     //Toast.makeText(getApplicationContext(),"Out Of Food", Toast.LENGTH_LONG).show();//notifies you that food is gone
                 }
 
-                // This will add a pingu at the cost of 1 food
+                // This will add 0 or 1 Zebra at the cost of 3 food
 
-                if (PinguLibrary.getFood() > 2) {
-                    PinguLibrary.setFood(PinguLibrary.getFood() - 3);
-                    String foodLoss = "Grass: " + PinguLibrary.getFood();
+                if (SaharaLib.getFood() > 2) {
+                    SaharaLib.setFood(SaharaLib.getFood() - 3);
+                    String foodLoss = "Grass: " + SaharaLib.getFood();
                     foodTextView.setText(foodLoss);
-                    PinguLibrary.setNumOfPingus(PinguLibrary.getNumOfPingus() + rand.nextInt(2));
-                    String NewNumOfPengus = "Zebras " + PinguLibrary.getNumOfPingus();
-                    numOfPingusTextView.setText(NewNumOfPengus);
+                    SaharaLib.setNumOfAnimals(SaharaLib.getNumOfZebras() + rand.nextInt(2));
+                    String NewNumOfZebras = "Zebras: " + SaharaLib.getNumOfZebras();
+                    numOfZebrasTextView.setText(NewNumOfZebras);
                 }
             }
         });
 
-
-
-
-
-
-
-
-
-        /*
-        //Movement stuff
-
-        penguinImage = (ImageView) findViewById(R.id.penguinsprite);
-
-        //Gets screen size
-
-        WindowManager wm = getWindowManager();
-        Display disp = wm.getDefaultDisplay();
-        Point size = new Point();
-        disp.getSize(size);
-        screenWidth = size.x;
-        screenHieght = size.y;
-
-        //Timer
-
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        changePos();
-                    }
-                });
-            }
-        }, 0, 20);
-        screenHieght = screenHieght/1.5; // Maybe will reduce the travel
-
-
-    }
-
-    //WORK ON METHOD SO WHEN IT REACHES CERTAIN HEIGHT IT WILL GO BACK DOWN
-    public void changePos(){
-
-        //Makes the penguin move up
-        //Also moves it side to side from each reset process
-        penguinUpY -=3;//Controls speed of penguin, originally at 10
-        if (penguinImage.getY() + penguinImage.getHeight() <= penguinUpY){
-            penguinUpX = PinguLibrary.getPosition() + rand.nextInt(250) + 10; //The 10 keeps the penguin in the position and not random, find out a way to make it more dynamic
-            penguinUpY = screenHieght + 100;
-        }
-
-
-        penguinImage.setX((float)penguinUpX);
-        penguinImage.setY((float)penguinUpY);
-
-        //Controls where the penguin will reset on the screen
-        if(penguinImage.getHeight() >= (penguinImage.getY()/7)){
-            penguinUpY = screenHieght + 100;
-
-        }
-    }
-    */
     }
 }
-//

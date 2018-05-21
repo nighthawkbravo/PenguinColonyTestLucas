@@ -6,7 +6,7 @@ package com.example.karls.penguincolony;
 
 public class ColonyData {
 
-    private int numOfPingus;
+    private int numOfAnimals;
     private int food;
     private static int day;
 
@@ -14,7 +14,7 @@ public class ColonyData {
 
 
     public ColonyData() {
-        this.numOfPingus = 6;
+        this.numOfAnimals = 6;
         this.food = 3;
         this.day = 0;
 
@@ -22,8 +22,8 @@ public class ColonyData {
     }
 
     //getters
-    public int getNumOfPingus() {
-        return numOfPingus;
+    public int getNumOfZebras() {
+        return numOfAnimals;
     }
     public int getFood() {
         return food;
@@ -35,8 +35,8 @@ public class ColonyData {
     public double getPosition() {return Position;}
 
     //Setters
-    public void setNumOfPingus(int numOfPingus) {
-        this.numOfPingus = numOfPingus;
+    public void setNumOfAnimals(int numOfAnimals) {
+        this.numOfAnimals = numOfAnimals;
     }
     public void setFood(int food) {
         this.food = food;

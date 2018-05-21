@@ -14,6 +14,8 @@ public class statsFragment {
     3.) get 0 or 3 grass, lose 0 or 1 zebra, lose 3 grass to make a zebra
     4.) in app name changes
 
+    Ult.) game, graphic, and app name changes
+
 
 
      */
