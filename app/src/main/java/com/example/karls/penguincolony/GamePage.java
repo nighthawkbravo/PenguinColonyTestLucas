@@ -24,27 +24,6 @@ import java.util.TimerTask;
 //Old code that works
 public class GamePage extends AppCompatActivity {
 
-    //Screen size
-
-    private double screenWidth;
-    private double screenHieght;
-
-    //Image
-
-    private ImageView penguinImage;
-
-    //https://github.com/nighthawkbravo/PenguinColonyTestLucas.git
-    //test commit
-    //Position
-
-    private double penguinUpX;
-    private double penguinUpY;
-    private float penguinDownX;
-    private float penguinDownY;
-    private float penguinLeftX;
-    private float penguinLeftY;
-    private float penguinRightX;
-    private float penuinRightY;
 
     //Initalize Class
 
@@ -62,7 +41,7 @@ public class GamePage extends AppCompatActivity {
 
     //dialog
     public void showDialog() {
-        int mStackLevel=1;
+        int mStackLevel = 1;
         mStackLevel++;
 
         // DialogFragment.show() will take care of adding the fragment
@@ -80,11 +59,13 @@ public class GamePage extends AppCompatActivity {
         newFragment.show(ft, "dialog");
     }
 
-    public void endGame(){
+    public void endGame() {
         if (PinguLibrary.getNumOfPingus() == 0 && PinguLibrary.getFood() == 0) {
             showDialog();
         }
     }
+
+
 
 
     @Override
@@ -109,39 +90,36 @@ public class GamePage extends AppCompatActivity {
                 endGame();
 
 
-                if (PinguLibrary.getNumOfPingus() == 0){
+                if (PinguLibrary.getNumOfPingus() == 0) {
                     //if all pingus are dead, then toast message
 
 
-
                     //Toast.makeText(getApplicationContext(),"All your penguins are dead", Toast.LENGTH_LONG).show();
-                    numOfPingusTextView.setText("Pingus " + PinguLibrary.getNumOfPingus());
-                }
-                else {
+                    numOfPingusTextView.setText("Zebras " + PinguLibrary.getNumOfPingus());
+                } else {
                     //or... decrease pingu count by 1
-                    PinguLibrary.setNumOfPingus(PinguLibrary.getNumOfPingus()-1);
-                    String NewNumOfPengus = "Pingus " + PinguLibrary.getNumOfPingus();
+                    PinguLibrary.setNumOfPingus(PinguLibrary.getNumOfPingus() - rand.nextInt(2));
+                    String NewNumOfPengus = "Zebras " + PinguLibrary.getNumOfPingus();
                     numOfPingusTextView.setText(NewNumOfPengus);
 
                     //this adds a day to the counter
-                    PinguLibrary.setDay(PinguLibrary.getDay()+1);
+                    PinguLibrary.setDay(PinguLibrary.getDay() + 1);
 
                     //Every five days, all pingus eat, exra pingus with no food die if they don't eat.
-                    if (PinguLibrary.getDay() % 20 == 0){
-                        if (PinguLibrary.getFood() < PinguLibrary.getNumOfPingus()){
-                            PinguLibrary.setNumOfPingus(PinguLibrary.getNumOfPingus()-(PinguLibrary.getNumOfPingus()-PinguLibrary.getFood()));
+                    if (PinguLibrary.getDay() % 20 == 0) {
+                        if (PinguLibrary.getFood() < PinguLibrary.getNumOfPingus()) {
+                            PinguLibrary.setNumOfPingus(PinguLibrary.getNumOfPingus() - (PinguLibrary.getNumOfPingus() - PinguLibrary.getFood()));
                             PinguLibrary.setNumOfPingus(0);
-                        }
-                        else{
-                            PinguLibrary.setFood(PinguLibrary.getFood()-PinguLibrary.getNumOfPingus());
+                        } else {
+                            PinguLibrary.setFood(PinguLibrary.getFood() - PinguLibrary.getNumOfPingus());
                         }
                     }
                     String daySetText = "Day: " + PinguLibrary.getDay();
                     dayCount.setText(daySetText);
 
-                    //adds random food from 0 - 3
-                    PinguLibrary.setFood(PinguLibrary.getFood()+rand.nextInt(4));
-                    String foodGain = "Food: " + PinguLibrary.getFood();
+                    //adds random food from 0 or 3
+                    PinguLibrary.setFood(PinguLibrary.getFood() + 3*rand.nextInt(2));
+                    String foodGain = "Grass: " + PinguLibrary.getFood();
                     foodTextView.setText(foodGain);
                 }
             }
@@ -154,20 +132,20 @@ public class GamePage extends AppCompatActivity {
                 endGame();
 
                 // food is used to make an egg. Zero food = no new pingus
-                if (PinguLibrary.getFood() == 0){
-                    String noFood = "Food: " + PinguLibrary.getFood();
+                if (PinguLibrary.getFood() < 3) {
+                    String noFood = "Grass: " + PinguLibrary.getFood();
                     foodTextView.setText(noFood);
                     //Toast.makeText(getApplicationContext(),"Out Of Food", Toast.LENGTH_LONG).show();//notifies you that food is gone
                 }
 
                 // This will add a pingu at the cost of 1 food
 
-                if (PinguLibrary.getFood() > 0) {
-                    PinguLibrary.setFood(PinguLibrary.getFood()-1);
-                    String foodLoss = "Food: " + PinguLibrary.getFood();
+                if (PinguLibrary.getFood() > 2) {
+                    PinguLibrary.setFood(PinguLibrary.getFood() - 3);
+                    String foodLoss = "Grass: " + PinguLibrary.getFood();
                     foodTextView.setText(foodLoss);
-                    PinguLibrary.setNumOfPingus(PinguLibrary.getNumOfPingus()+rand.nextInt(2));
-                    String NewNumOfPengus = "Pingus " + PinguLibrary.getNumOfPingus();
+                    PinguLibrary.setNumOfPingus(PinguLibrary.getNumOfPingus() + rand.nextInt(2));
+                    String NewNumOfPengus = "Zebras " + PinguLibrary.getNumOfPingus();
                     numOfPingusTextView.setText(NewNumOfPengus);
                 }
             }
@@ -181,7 +159,7 @@ public class GamePage extends AppCompatActivity {
 
 
 
-
+        /*
         //Movement stuff
 
         penguinImage = (ImageView) findViewById(R.id.penguinsprite);
@@ -233,6 +211,8 @@ public class GamePage extends AppCompatActivity {
             penguinUpY = screenHieght + 100;
 
         }
+    }
+    */
     }
 }
 //

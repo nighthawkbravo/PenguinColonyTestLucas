@@ -8,14 +8,14 @@ public class ColonyData {
 
     private int numOfPingus;
     private int food;
-    private int day;
+    private static int day;
 
     private double Position;
 
 
     public ColonyData() {
-        this.numOfPingus = 10;
-        this.food = 5;
+        this.numOfPingus = 6;
+        this.food = 3;
         this.day = 0;
 
         this.Position = 100;
@@ -28,7 +28,7 @@ public class ColonyData {
     public int getFood() {
         return food;
     }
-    public int getDay() {
+    public static int getDay() {
         return day;
     }
 

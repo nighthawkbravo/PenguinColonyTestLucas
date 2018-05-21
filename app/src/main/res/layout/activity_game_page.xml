@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/saharafinalpop"
     tools:context="com.example.karls.penguincolony.GamePage"
     tools:layout_editor_absoluteY="81dp">
 
@@ -15,7 +15,7 @@
         android:layout_height="50dp"
         android:layout_marginBottom="50dp"
         android:layout_marginStart="8dp"
-        android:text="Hunt"
+        android:text="Graze"
         app:layout_constraintBottom_toTopOf="@+id/dayTextView"
         app:layout_constraintStart_toStartOf="@+id/guideline4" />
 
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="70dp"
-        android:text="Pingus: 10"
+        android:text="Zebras: 6"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintStart_toEndOf="@+id/dayTextView" />
 
@@ -35,7 +35,7 @@
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="68dp"
-        android:text="Food: 5"
+        android:text="Grass: 3"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintStart_toEndOf="@+id/textView1" />
 
@@ -58,8 +58,8 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginBottom="50dp"
-        android:layout_marginStart="34dp"
-        android:text="Egg"
+        android:layout_marginStart="32dp"
+        android:text="Reproduce"
         app:layout_constraintBottom_toTopOf="@+id/textView1"
         app:layout_constraintStart_toEndOf="@+id/butHunt" />
 
@@ -80,18 +80,5 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="20dp" />
-
-    <ImageView
-        android:id="@+id/penguinsprite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:adjustViewBounds="true"
-        android:maxHeight="40dp"
-        android:maxWidth="40dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/movingpenguin"
-        app:layout_constraintLeft_toLeftOf="parent"
-        tools:layout_editor_absoluteY="4dp"/>
 
 </android.support.constraint.ConstraintLayout>

@@ -10,9 +10,14 @@ import android.widget.TextView;
 
 import com.example.karls.penguincolony.R;
 
+import static com.example.karls.penguincolony.ColonyData.getDay;
+
 
 public class MyDialogFragment extends DialogFragment {
     int mNum;
+
+
+
 
     /**
      * Create a new instance of MyDialogFragment, providing "num"
@@ -32,6 +37,11 @@ public class MyDialogFragment extends DialogFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
+
+
         mNum = getArguments().getInt("num");
 
         // Pick a style based on the num.
@@ -54,25 +64,49 @@ public class MyDialogFragment extends DialogFragment {
             case 8: theme = android.R.style.Theme_Holo_Light; break;
         }
         setStyle(style, theme);
+
+
     }
+
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_dialog, container, false);
-        View tv = v.findViewById(R.id.textfrag);
-        ((TextView)tv).setText("Dialog #" + mNum + ": using style ");
 
-        /*
-        // Watch for button clicks.
-        Button button = (Button)v.findViewById(R.id.show);
+        Button button = v.findViewById(R.id.resetbutton);
+
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // When button is clicked, call up to owning activity.
-                ((FragmentDialog)getActivity()).showDialog();
+                System.exit(0);
+
             }
         });
-        */
+
+        View tv = v.findViewById(R.id.textfrag);
+        ((TextView)tv).setText("You have lost!");
+        View tv2 = v.findViewById(R.id.textfrag2);
+        ((TextView)tv2).setText("Day: " + getDay());
+
+
 
         return v;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
