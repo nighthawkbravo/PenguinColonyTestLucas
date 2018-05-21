@@ -97,6 +97,7 @@ public class GamePage extends AppCompatActivity {
                     SaharaLib.setDay(SaharaLib.getDay() + 1);
 
                     //Every five days, all Zebras eat, extra Zebras with no food die if they don't eat.
+                    /*
                     if (SaharaLib.getDay() % 20 == 0) {
                         if (SaharaLib.getFood() < SaharaLib.getNumOfZebras()) {
                             SaharaLib.setNumOfAnimals(SaharaLib.getNumOfZebras() - (SaharaLib.getNumOfZebras() - SaharaLib.getFood()));
@@ -105,6 +106,7 @@ public class GamePage extends AppCompatActivity {
                             SaharaLib.setFood(SaharaLib.getFood() - SaharaLib.getNumOfZebras());
                         }
                     }
+                    */
                     String daySetText = "Day: " + SaharaLib.getDay();
                     dayCount.setText(daySetText);
 
